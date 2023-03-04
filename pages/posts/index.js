@@ -3,7 +3,7 @@ import MainContainer from "../../components/MainContainer";
 import CommingSoon from "../../components/CommingSoon";
 const posts = () => {
   return (
-    <MainContainer>
+    <MainContainer heading="Posts">
       <CommingSoon />
     </MainContainer>
   );

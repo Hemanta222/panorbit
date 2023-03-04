@@ -18,6 +18,7 @@ const Index = () => {
   };
   return (
     <Stack
+      component="navbar"
       sx={{
         background: `linear-gradient(0deg, rgba(95,58,200,1) 0%, rgba(51,95,200,1) 100%)`,
         color: "#fff",
@@ -27,9 +28,10 @@ const Index = () => {
         height: "100vh",
       }}
     >
-      <List sx={{ width: "270px" }}>
+      <List sx={{ width: "270px" }} component="ul">
         {NavItems.map((navItem) => (
           <Box
+            component="li"
             sx={{ display: "flex", alignItems: "center", position: "relative" }}
             key={navItem.id}
           >

@@ -18,6 +18,7 @@ const Index = ({ heading }) => {
 
   return (
     <Box
+      component="header"
       sx={{
         display: "flex",
         justifyContent: "space-between",

@@ -42,13 +42,21 @@ const Index = () => {
   return (
     <Box
       sx={{
-        background: `rgb(112,44,200)`,
-        background: `linear-gradient(54deg, rgba(112,44,200,1) 0%, rgba(51,95,200,1) 100%)`,
-        minHeight: "400px",
+        // background: `rgb(112,44,200)`,
+        // background: `linear-gradient(54deg, rgba(112,44,200,1) 0%, rgba(51,95,200,1) 100%)`,
+        // minHeight: "400px",
+        // background: "#6f2cc8",
+        // background: "-webkit-linear-gradient(45deg, #6f2cc8 0%, #345ec8 100%)",
+        // background: "linear-gradient(45deg, #6f2cc8 0%, #345ec8 100%)",
         // clipPath: `polygon(0 44%, 8% 47%,16% 47%, 34% 45%, 69% 56%, 87% 52%, 100% 44%, 100% 0, 0 0)`,
         paddingTop: "8rem",
+        paddingBottom: "8rem",
+
+        background: 'url("/landing-background.svg") no-repeat',
+        maxWidth: "1600px",
+        margin: "auto",
       }}
-      className="clipPath"
+      component="main"
     >
       <Container maxWidth="sm">
         <Card
@@ -62,7 +70,7 @@ const Index = () => {
             my={1}
             px={4}
             mr={1}
-            sx={{ maxHeight: 400, overflowY: "scroll" }}
+            sx={{ maxHeight: 400, zIndex: 88, overflowY: "scroll" }}
           >
             {users.map((user, index) => (
               <Stack key={user.id}>

@@ -4,7 +4,7 @@ import CommingSoon from "../../components/CommingSoon";
 
 const todo = () => {
   return (
-    <MainContainer>
+    <MainContainer heading='ToDo'>
       <CommingSoon />
     </MainContainer>
   );
