@@ -1,7 +1,7 @@
 import React from "react";
-
-const index = () => {
-  return <div>Profile</div>;
+import MainContainer from "../../components/MainContainer";
+const profile = () => {
+  return <MainContainer>profile</MainContainer>;
 };
 
-export default index;
+export default profile;

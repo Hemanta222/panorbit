@@ -18,8 +18,17 @@ import { Context } from "../layout";
 import { LandingHeader, MuiDialog } from "@/styles/StyledComponents";
 const Index = () => {
   const router = useRouter();
+  const { users, loading, changePreviousUser } = React.useContext(Context);
 
-  const { users, loading } = React.useContext(Context);
+  const routerChangeHandler = (id, index) => {
+    if (index === users.length - 1) {
+      changePreviousUser(users[0].id);
+    } else {
+      changePreviousUser(users[index + 1].id);
+    }
+    router.push(`/profile/${id}`);
+  };
+
   if (loading) {
     return (
       <MuiDialog open={loading}>
@@ -39,6 +48,7 @@ const Index = () => {
         // clipPath: `polygon(0 44%, 8% 47%,16% 47%, 34% 45%, 69% 56%, 87% 52%, 100% 44%, 100% 0, 0 0)`,
         paddingTop: "8rem",
       }}
+      className="clipPath"
     >
       <Container maxWidth="sm">
         <Card
@@ -54,7 +64,7 @@ const Index = () => {
             mr={1}
             sx={{ maxHeight: 400, overflowY: "scroll" }}
           >
-            {users.map((user, i) => (
+            {users.map((user, index) => (
               <Stack key={user.id}>
                 <Stack
                   direction="row"
@@ -66,7 +76,7 @@ const Index = () => {
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    router.push(`/profile/${user.id}`);
+                    routerChangeHandler(user.id, index);
                   }}
                 >
                   <Avatar sx={{ width: "35px", height: "35px" }}>

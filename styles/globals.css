@@ -25,15 +25,19 @@ a {
 }
 
 .clipPath {
-  clip-path: polygon(
+  /* clip-path: polygon(
     0 44%,
     8% 47%,
-    16% 47%,
+    16% 50%,
+
+    20% 50%,
     34% 45%,
     69% 56%,
     87% 52%,
     100% 44%,
     100% 0,
     0 0
-  );
+  ); */
+  position: relative;
+  /* clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); */
 }

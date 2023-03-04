@@ -7,9 +7,9 @@ export const LandingHeader = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
   fontSize: "1.4rem",
 }));
-export const Header = styled(Typography)(({ theme }) => ({
+export const HeaderText = styled(Typography)(({ theme }) => ({
   fontWeight: "bold",
-  fontSize: "1.4rem",
+  fontSize: "1.3rem",
   color: theme.palette.text.primary,
 }));
 export const MuiDialog = styled(Dialog)(({ theme }) => ({

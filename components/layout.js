@@ -1,19 +1,31 @@
 import React, { useState, createContext } from "react";
-import { responsiveFontSizes, ThemeProvider } from "@mui/material";
+import {
+  Box,
+  Container,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material";
 import { theme } from "../styles/MuiTheme";
 import axios from "axios";
-
+import { useRouter } from "next/router";
+import Navbar from "../components/Navbar";
 export const Context = createContext();
 const Layout = ({ children }) => {
   let customTheme = responsiveFontSizes(theme);
   const [users, setUsers] = useState([]);
   const [loading, setloading] = useState(true);
-
+  const [previousUser, setPreviousUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
+  const router = useRouter();
+  //fetching users from api
   React.useEffect(() => {
     axios
       .get(`${process.env.NEXT_PUBLIC_BASE_URL}`)
       .then((response) => {
-        setUsers(response.data.users);
+        const { users } = response.data;
+        setUsers(users);
+        setPreviousUser(users[2]);
+        setCurrentUser(users[0]);
         setloading(false);
       })
       .catch((err) => {
@@ -22,9 +34,48 @@ const Layout = ({ children }) => {
       });
   }, []);
 
+  //used to change between users when clicked on the profile menu (users list)
+  const changePreviousUser = (userId) => {
+    const user = users.find((user) => user.id == userId);
+    setPreviousUser(user);
+  };
+  // set selected user as current user from account list card
+  const changeCurrentUser = (user) => {
+    setCurrentUser(user);
+  };
+
   return (
-    <Context.Provider value={{ users: users, loading: loading }}>
-      <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
+    <Context.Provider
+      value={{
+        users: users,
+        loading: loading,
+        previousUser: previousUser,
+        changePreviousUser: changePreviousUser,
+        currentUser: currentUser,
+        changeCurrentUser: changeCurrentUser,
+      }}
+    >
+      <ThemeProvider theme={customTheme}>
+        <Box>
+          {router.pathname === "/" ? (
+            children
+          ) : (
+            <Container
+              maxWidth="xl"
+              sx={{
+                marginTop: "3rem",
+                marginBottom: "3rem",
+                minHeight: "90vh",
+              }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Navbar />
+                {children}
+              </Box>
+            </Container>
+          )}
+        </Box>
+      </ThemeProvider>
     </Context.Provider>
   );
 };

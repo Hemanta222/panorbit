@@ -9,13 +9,13 @@ export const theme = createTheme({
       light: "#6377d3",
     },
     secondary: {
-      main: " #ab003c",
-      dark: "#f50057",
-      light: "#f73378",
+      main: "#D55151",
+      dark: "#953838",
+      light: "#dd7373",
       contrastText: "#fff",
     },
     text: {
-      primary: "#545454",
+      primary: "#646464",
       secondary: "#A0A0A0",
       disabled: "rgba(0, 0, 0, 0.1)",
       contrastText: "#000",

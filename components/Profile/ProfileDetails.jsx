@@ -1,89 +1,53 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import { Avatar, Box, Container, Grid, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 
 //user imports
 import { Context } from "../layout";
 import {
-  Header,
+  HeaderText,
   MuiDivider,
   ProfileTextSecondary,
 } from "../../styles/StyledComponents";
-
-import ProfileMenu from "./ProfileMenu";
+import Header from "../Header";
+import { useRouter } from "next/router";
 
 const ProfileDetails = () => {
-  const { users } = React.useContext(Context);
-  const [currentUser, setCurrentUser] = useState({});
+
+  const { currentUser, changeCurrentUser, users } = React.useContext(Context);
   const router = useRouter();
-  console.log("currentUser", currentUser);
+
+  //set selected user as current user
   React.useEffect(() => {
     if (router.isReady) {
       const { profileId } = router.query;
       const userIndex = users.findIndex((user) => user.id == profileId);
-      setCurrentUser(users[userIndex]);
+      changeCurrentUser(users[userIndex]);
     }
+    /* eslint-disable */
   }, [router.isReady, router.query, users]);
+  
   return (
-    <Container
-      maxWidth="lg"
+    <Box
       sx={{
-        padding: "2rem 0",
-        margin: "3rem auto",
+        padding: ".5rem 2.5rem",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingBottom: "1.5rem",
-        }}
-      >
-        <Header>Profile</Header>
-        <Stack>
-          <Stack
-            direction="row"
-            gap={2}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              padding: ".5rem 0",
-              cursor: "pointer",
-            }}
-            // onClick={() => {
-            //   router.push(`/profile/${user.id}`);
-            // }}
-          >
-            <Avatar sx={{ width: "35px", height: "35px" }}>
-              <Image
-                src={currentUser?.profilepicture}
-                width={35}
-                height={35}
-                alt={`img_${currentUser?.name}`}
-              />
-            </Avatar>
-            <Typography sx={{ fontWeight: 500, fontSize: "1.1rem" }}>
-              {currentUser?.name}
-            </Typography>
-          </Stack>
-        </Stack>
-      </Box>
+      <Header heading="Profile" />
+
       <MuiDivider />
       <Grid container spacing={2} sx={{ paddingTop: "2rem" }}>
         {/*  //###################### LEFT PART ######################// */}
         <Grid item xs={12} md={4}>
           <Stack gap={1} alignItems={{ xs: "left", sm: "center" }}>
-            <Image
+            <Box
+              component="img"
               src={currentUser?.profilepicture}
               width={200}
               height={200}
               alt={`${currentUser}_image`}
               style={{ borderRadius: "50%" }}
-              priority
             />
-            <Header>{currentUser?.name}</Header>
+            <HeaderText>{currentUser?.name}</HeaderText>
             <Grid container spacing={2}>
               {/* //------------Username----------------// */}
               <Grid item xs={12} sm={6}>
@@ -92,7 +56,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.username}</Header>
+                <HeaderText>{currentUser?.username}</HeaderText>
               </Grid>
               {/* //------------email----------------// */}
               <Grid item xs={12} sm={6}>
@@ -101,7 +65,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.email}</Header>
+                <HeaderText>{currentUser?.email}</HeaderText>
               </Grid>
               {/* //------------phone----------------// */}
               <Grid item xs={12} sm={6}>
@@ -110,7 +74,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.phone}</Header>
+                <HeaderText>{currentUser?.phone}</HeaderText>
               </Grid>
               {/* //------------website----------------// */}
               <Grid item xs={12} sm={6}>
@@ -119,7 +83,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.website}</Header>
+                <HeaderText>{currentUser?.website}</HeaderText>
               </Grid>
               {/* //------------Divider----------------// */}{" "}
               <Grid item xs={12}>
@@ -141,7 +105,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>{" "}
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.company?.name}</Header>
+                <HeaderText>{currentUser?.company?.name}</HeaderText>
               </Grid>
               {/* //------------catchPhrase----------------// */}
               <Grid item xs={12} sm={6}>
@@ -150,7 +114,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.company?.catchPhrase}</Header>
+                <HeaderText>{currentUser?.company?.catchPhrase}</HeaderText>
               </Grid>
               {/* //------------bs----------------// */}
               <Grid item xs={12} sm={6}>
@@ -159,7 +123,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Header>{currentUser?.company?.bs}</Header>
+                <HeaderText>{currentUser?.company?.bs}</HeaderText>
               </Grid>
             </Grid>
           </Stack>
@@ -183,7 +147,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={9}>
-                <Header>{currentUser?.address?.street}</Header>
+                <HeaderText>{currentUser?.address?.street}</HeaderText>
               </Grid>
               {/* //---------------- Suite ------------------ */}
               <Grid item xs={12} sm={3}>
@@ -192,7 +156,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={9}>
-                <Header>{currentUser?.address?.suite}</Header>
+                <HeaderText>{currentUser?.address?.suite}</HeaderText>
               </Grid>
               {/* //---------------- City ------------------ */}
               <Grid item xs={12} sm={3}>
@@ -201,7 +165,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={9}>
-                <Header>{currentUser?.address?.city}</Header>
+                <HeaderText>{currentUser?.address?.city}</HeaderText>
               </Grid>
               {/* //---------------- Zipcode ------------------ */}
               <Grid item xs={12} sm={3}>
@@ -210,7 +174,7 @@ const ProfileDetails = () => {
                 </ProfileTextSecondary>
               </Grid>
               <Grid item xs={12} sm={9}>
-                <Header>{currentUser?.address?.zipcode}</Header>
+                <HeaderText>{currentUser?.address?.zipcode}</HeaderText>
               </Grid>
               {/* //---------------- Image ------------------ */}
 
@@ -225,11 +189,15 @@ const ProfileDetails = () => {
                     borderRadius: "1rem",
                   }}
                 >
-                  <Image
+                  <Box
+                    component="img"
                     src="/location-image.png"
-                    fill
                     alt="location"
-                    style={{ borderRadius: "1rem" }}
+                    style={{
+                      borderRadius: "1rem",
+                      width: "100%",
+                      height: "100%",
+                    }}
                   />
                 </Box>
               </Grid>
@@ -266,7 +234,7 @@ const ProfileDetails = () => {
           </Stack>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 
