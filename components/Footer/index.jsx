@@ -7,6 +7,8 @@ import {
   ListItemText,
 } from "@mui/material";
 import React from "react";
+
+//user import
 import { Context } from "../layout";
 
 const Index = () => {
@@ -20,17 +22,16 @@ const Index = () => {
   return (
     <Box
       component="footer"
-      sx={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-      }}
+      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
     >
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "auto auto", sm: "50% auto", md: "78% auto" },
+          gridTemplateColumns: {
+            xs: "auto auto",
+            sm: "50% auto",
+            md: "78% auto",
+          },
           maxWidth: 1600,
           margin: "0 auto",
         }}
@@ -38,6 +39,7 @@ const Index = () => {
         <Box></Box>
         <Box>
           <List
+            id="List"
             sx={{
               maxWidth: 280,
               maxHeight: 400,

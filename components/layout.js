@@ -1,10 +1,5 @@
 import React, { useState, createContext } from "react";
-import {
-  Box,
-  Container,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material";
+import { Box, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -12,6 +7,7 @@ import { useRouter } from "next/router";
 import { theme } from "../styles/MuiTheme";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { MuiLayoutContainer } from "@/styles/StyledComponents";
 
 export const Context = createContext();
 
@@ -65,19 +61,13 @@ const Layout = ({ children }) => {
           {router.pathname === "/" ? (
             children
           ) : (
-            <Container
-              maxWidth="xl"
-              sx={{
-                marginTop: "3rem",
-                minHeight: "90vh",
-              }}
-            >
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
+            <MuiLayoutContainer maxWidth="xl">
+              <Box>
                 <Navbar />
-                <main>{children}</main>
+                {children}
               </Box>
               <Footer />
-            </Container>
+            </MuiLayoutContainer>
           )}
         </Box>
       </ThemeProvider>

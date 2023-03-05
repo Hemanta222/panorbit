@@ -1,4 +1,4 @@
-import { HeaderText } from "@/styles/StyledComponents";
+import { HeaderText, MuiHeaderBox } from "@/styles/StyledComponents";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Context } from "../layout";
@@ -17,15 +17,7 @@ const Index = ({ heading }) => {
   };
 
   return (
-    <Box
-      component="header"
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingBottom: "1.5rem",
-      }}
-    >
+    <MuiHeaderBox component="header">
       {open ? (
         <ProfileMenu
           handleClose={handleClose}
@@ -37,23 +29,11 @@ const Index = ({ heading }) => {
       ) : null}
       <HeaderText>{heading}</HeaderText>
       <Stack>
-        <Stack
-          direction="row"
-          gap={2}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            padding: ".5rem 0",
-            cursor: "pointer",
-          }}
-          onClick={handleClick}
-        >
-          <Avatar sx={{ width: "35px", height: "35px" }}>
+        <Stack id="Menu" onClick={handleClick}>
+          <Avatar id="Menu_avatar">
             <Box
               component="img"
               src={currentUser?.profilepicture}
-              width={35}
-              height={35}
               alt={`img_${currentUser?.name}`}
             />
           </Avatar>
@@ -62,7 +42,7 @@ const Index = ({ heading }) => {
           </Typography>
         </Stack>
       </Stack>
-    </Box>
+    </MuiHeaderBox>
   );
 };
 

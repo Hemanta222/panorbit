@@ -51,7 +51,7 @@ const ProfileDetails = () => {
             {/* //------------email----------------// */}
             <Grid item xs={12} sm={6}>
               <ProfileTextSecondary variant="body1" sx={{ textAlign: "end" }}>
-                email :{" "}
+                email :
               </ProfileTextSecondary>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -60,7 +60,7 @@ const ProfileDetails = () => {
             {/* //------------phone----------------// */}
             <Grid item xs={12} sm={6}>
               <ProfileTextSecondary variant="body1" sx={{ textAlign: "end" }}>
-                Phone :{" "}
+                Phone :
               </ProfileTextSecondary>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -69,7 +69,7 @@ const ProfileDetails = () => {
             {/* //------------website----------------// */}
             <Grid item xs={12} sm={6}>
               <ProfileTextSecondary variant="body1" sx={{ textAlign: "end" }}>
-                Website :{" "}
+                Website :
               </ProfileTextSecondary>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -91,8 +91,8 @@ const ProfileDetails = () => {
             {/* //------------name----------------// */}
             <Grid item xs={12} sm={6}>
               <ProfileTextSecondary variant="body1" sx={{ textAlign: "end" }}>
-                name :{" "}
-              </ProfileTextSecondary>{" "}
+                name :
+              </ProfileTextSecondary>
             </Grid>
             <Grid item xs={12} sm={6}>
               <HeaderText>{currentUser?.company?.name}</HeaderText>
@@ -100,7 +100,7 @@ const ProfileDetails = () => {
             {/* //------------catchPhrase----------------// */}
             <Grid item xs={12} sm={6}>
               <ProfileTextSecondary variant="body1" sx={{ textAlign: "end" }}>
-                catchPhrase :{" "}
+                catchPhrase :
               </ProfileTextSecondary>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -109,7 +109,7 @@ const ProfileDetails = () => {
             {/* //------------bs----------------// */}
             <Grid item xs={12} sm={6}>
               <ProfileTextSecondary variant="body1" sx={{ textAlign: "end" }}>
-                bs :{" "}
+                bs :
               </ProfileTextSecondary>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -172,18 +172,14 @@ const ProfileDetails = () => {
             <Grid item xs={12} sm={11}>
               <Box
                 sx={{
-                  width: "100%",
-                  height: "350px",
-                  backgroundColor: "yellow",
-                  position: "relative",
-                  borderRadius: "1rem",
+                  height: "340px",
                 }}
               >
                 <Box
                   component="img"
                   src="/location-image.png"
                   alt="location"
-                  style={{
+                  sx={{
                     borderRadius: "1rem",
                     width: "100%",
                     height: "100%",
