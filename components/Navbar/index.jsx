@@ -18,7 +18,7 @@ const Index = () => {
   };
   return (
     <Stack
-      component="navbar"
+      component="nav"
       sx={{
         background: `linear-gradient(0deg, rgba(95,58,200,1) 0%, rgba(51,95,200,1) 100%)`,
         color: "#fff",

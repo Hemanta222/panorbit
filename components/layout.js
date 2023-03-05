@@ -5,11 +5,16 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@mui/material";
-import { theme } from "../styles/MuiTheme";
 import axios from "axios";
 import { useRouter } from "next/router";
+
+//user imports
+import { theme } from "../styles/MuiTheme";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 export const Context = createContext();
+
 const Layout = ({ children }) => {
   let customTheme = responsiveFontSizes(theme);
   const [users, setUsers] = useState([]);
@@ -64,14 +69,14 @@ const Layout = ({ children }) => {
               maxWidth="xl"
               sx={{
                 marginTop: "3rem",
-                marginBottom: "3rem",
                 minHeight: "90vh",
               }}
             >
               <Box sx={{ display: "flex", flexDirection: "row" }}>
                 <Navbar />
-                {children}
+                <main>{children}</main>
               </Box>
+              <Footer />
             </Container>
           )}
         </Box>

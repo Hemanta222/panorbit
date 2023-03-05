@@ -6,9 +6,9 @@ import { MuiDivider } from "../../styles/StyledComponents";
 const todo = ({ children, heading }) => {
   return (
     <Box
-      component="main"
       sx={{
         padding: ".5rem 2.5rem",
+        marginBottom: "3rem",
         width: "100%",
         position: "relative",
       }}
